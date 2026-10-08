@@ -1,0 +1,38 @@
+{
+  "name": "ip-browser",
+  "productName": "IP Browser",
+  "version": "1.0.0",
+  "description": "A simple Windows browser that asks for an IPv4 proxy configuration on startup and routes all browsing through it.",
+  "main": "main.js",
+  "author": "IP Browser",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable --x64",
+    "dist:installer": "electron-builder --win nsis --x64"
+  },
+  "devDependencies": {
+    "electron": "^44.7.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.ipbrowser.app",
+    "productName": "IP Browser",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  }
+}
